@@ -54,7 +54,8 @@ namespace apiPacientes
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseHttpsRedirection();
+            //Não usar para aceitar sem comunicação SSL
+            //app.UseHttpsRedirection();
 
             app.UseRouting();
 
