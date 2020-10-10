@@ -10,10 +10,10 @@ namespace apiPacientes.Repositorio
 
          //recuperar uma lista
          IEnumerable<Paciente> GetAll();
-
+         
          //busca por id
          Paciente Find(long id);
-
+         
          //remove
          void Remove(long id);
          

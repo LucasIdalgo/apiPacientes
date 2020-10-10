@@ -32,10 +32,17 @@ namespace apiPacientes
             services.AddDbContext<PacienteDbContext>(options =>
                 options.UseMySql(connection)
             );
-            
             //setar os repositórios
             services.AddTransient<IPacienteRepository, PacienteRepository>();
             services.AddControllers();
+            services.AddCors(
+                options => options.AddDefaultPolicy(
+                    builder => builder
+                                .AllowAnyOrigin()
+                                .AllowAnyMethod()
+                                .AllowAnyHeader()
+                )
+            );
             services.AddMvc();
         }
 
@@ -51,12 +58,15 @@ namespace apiPacientes
 
             app.UseRouting();
 
+            app.UseCors();
+
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
             });
+            
         }
     }
 }
